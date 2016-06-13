@@ -1,3 +1,7 @@
+#paideia-panel {
+  font-family: Geneva, sans-serif;
+  font-size: 12px;
+}
 .paideia-input input[type="text"] {
   width: 90%;
   padding: 10px;
@@ -9,6 +13,9 @@
   border: solid 1px #707070;
   box-shadow: 0 0 5px 1px #969696;
 }
+.another-dict li{
+  font-size: 12px;
+}
 
 .paideia-button {
   padding: 5px;
@@ -19,6 +26,8 @@
   border-color: aliceblue;
   border-radius: 3px;
 }
+
+
 /*
 .paideia-table Style - This is what you want
 ------------------------------------------------------------------ */
@@ -87,10 +96,13 @@
   border-left: 0;
 }
 .paideia-table tr td {
-  padding:18px;
+  padding:10px;
   border-top: 1px solid #ffffff;
   border-bottom:1px solid #e0e0e0;
   border-left: 1px solid #e0e0e0;
+
+  font-family: Geneva, sans-serif;
+  font-size: 12px;
 
   background: #fafafa;
   background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));

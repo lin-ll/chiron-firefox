@@ -1,6 +1,6 @@
 {
-  "name": "Chromium Dictionary",
-  "short_name":"Chromium",
+  "name": "Firefoxium Dictionary",
+  "short_name":"Firefoxium",
   "description": "Look up Latin or Greek words directly in your webpage.",
   "version": "1.0.1",
   "icons": {
@@ -16,7 +16,7 @@
   ],
   "applications": {
     "gecko": {
-      "id": "chromium-master@paideiainstitute.org",
+      "id": "firefoxium@paideiainstitute.org",
       "strict_min_version": "45.0"
     }
   },
@@ -26,7 +26,7 @@
       "19": "paideia-favicon.png",
       "38": "paideia-favicon.png"
     },
-    "default_title": "Chromium Dictionary",
+    "default_title": "Firefoxium Dictionary",
     "default_popup": "popup.html"
   },
   "content_scripts": [{
