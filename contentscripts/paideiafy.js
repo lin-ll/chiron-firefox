@@ -6,6 +6,10 @@
     jquery preloaded in 'manifest.json'
 
 ******** */
+console.log('running paideiafy.js');
+var event = 0;
+var lang;
+
 function anotherDictionary (word) {
   return '<p>Try this word in another dictionary: </p>' +
     '<ul class="another-dict">' +
@@ -13,8 +17,6 @@ function anotherDictionary (word) {
       '<li><a target="_blank" href="http://www.perseus.tufts.edu/hopper/resolveform?type=exact&lookup=&lang=greek">Perseus LSJ</a></li>' +
     '</ul>'
 };
-
-console.log('running paideiafy.js');
 
 function rmPanel() {
   var last = document.getElementById('paideia-panel');
@@ -94,8 +96,11 @@ function paidieaify(word, language) {
 }
 
 function runPaideiaChromium(language) {
-  document.body.addEventListener('dblclick', function(info) {
-    console.log("received doubleclick");
-    paidieaify(window.getSelection().toString(), language);
-  });
+  lang = language;
+  if (event == 0) {
+    event = 1;
+    document.body.addEventListener('dblclick', function(info) {
+      paidieaify(window.getSelection().toString(), lang);
+    });
+  }
 }
