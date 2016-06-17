@@ -65,31 +65,32 @@ function manualSearch(word) {
 }
 
 function parseAjax(word, toReturn) {
+  console.log("parsing ajax");
   var thanks = '<hr style="margin-top: 2em;" /><footer style="font-size:10px; text-align: left;">Morphology provided by Morpheus from the <a href="http://www.perseus.tufts.edu/hopper/">Perseus Digital Library</a> at Tufts University.</footer>';
   var perseus = $('<div/>').html(toReturn).contents();
-    lemma = perseus.find('.lemma');
-    resultFound = perseus.find('.lemma').html(); // will be undefined if perseus finds no results
-    if (resultFound) {
+  lemma = perseus.find('.lemma');
+  resultFound = perseus.find('.lemma').html(); // will be undefined if perseus finds no results
+  if (resultFound) {
     var header = lemma.find('.lemma_header').prop('outerHTML');
         table = lemma.find('table').addClass('paideia-table').prop('outerHTML');
     insertDiv('<div id="paideia-panel">' + header + "<br />" + table + anotherDictionary(word) + thanks + '</div>');
     $('#paideia-panel').click(rmPanel);
-    } else manualSearch(word);
+  } 
+  else manualSearch(word);
 }
 
 function paidieaify(word, language) {
-  var thanks = '<hr style="margin-top: 2em;" /><footer style="font-size:10px; text-align: left;">Morphology provided by Morpheus from the <a href="http://www.perseus.tufts.edu/hopper/">Perseus Digital Library</a> at Tufts University.</footer>';
   var langCode = 'la'; // latin by default
   if (language == 'greek') langCode = 'greek';
 
   console.log("before ajax");
   var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (xhttp.readyState == 4 && xhttp.status == 200) parseAjax(word, xhttp.responseText);
-    };
-    xhttp.open("GET", 'http://www.perseus.tufts.edu/hopper/morph?l='+ word + '&la='+langCode, true);
-    xhttp.setRequestHeader("cache-control", "no-cache");
-    xhttp.send();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) parseAjax(word, xhttp.responseText);
+  };
+  xhttp.open("GET", 'http://www.perseus.tufts.edu/hopper/morph?l='+ word + '&la='+langCode, true);
+  xhttp.setRequestHeader("cache-control", "no-cache");
+  xhttp.send();
 }
 
 function runPaideiaChromium(language) {
