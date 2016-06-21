@@ -5,6 +5,14 @@
   NOTES:
     jquery preloaded in 'manifest.json'
 
+  AUTHOR: Lucy Lin
+  DATE: 21 June 2016 (Tuesday)
+  DESCRIPTION:
+    enable quizlet functionality
+    fixed glitch that would toggle between Latin and Greek definitions when clicking the popup in the same session more than once
+  NOTES:
+    executeCopy function uses document.execCommand('Copy') which is only compatible with Chrome and Firefox
+
 ******** */
 console.log('running paideiafy.js');
 var event = 0;
