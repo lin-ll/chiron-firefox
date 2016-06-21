@@ -9,6 +9,32 @@
 console.log('running paideiafy.js');
 var event = 0;
 var lang;
+var saved = "";
+
+function quizlet() {
+  insertDiv('<div id="paideia-panel"><b>Just copy and paste the text below into the import space when creating a Quizlet set.</b><br>' + 
+    '<div id="vocab"><pre style="font-size: 12px; font-family: Geneva, sans-serif; text-align: left;">' + saved + '</pre></div>' + 
+    '<button id="copy">Highlight, then Ctrl/Cmd-C to copy!</button>' + 
+    '<button id="go-quizlet">Open Quizlet in new tab!</button>' + 
+    '<button id="remove">Close</button></div>');
+  $('#remove').click(rmPanel);
+  document.getElementById('copy').addEventListener('click', function() { selectText('vocab'); });
+  document.getElementById('go-quizlet').addEventListener('click', function() {
+    window.open("https://quizlet.com/create-set", "Quizlet-Tab");
+  });
+}
+
+function selectText(containerid) {
+    if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select();
+    } else if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(document.getElementById(containerid));
+        window.getSelection().addRange(range);
+    }
+}
 
 function anotherDictionary (word) {
   return '<p>Try this word in another dictionary: </p>' +
@@ -74,6 +100,9 @@ function parseAjax(word, toReturn) {
   resultFound = perseus.find('.lemma').html(); // will be undefined if perseus finds no results
   if (resultFound) {
     var header = lemma.find('.lemma_header').prop('outerHTML');
+    var def = lemma.find('.lemma_definition')[0];
+    saved += word + '\t' + def.innerHTML.trim() + '\n';
+    console.log(saved);
     table = lemma.find('table').addClass('paideia-table').prop('outerHTML');
     insertDiv('<div id="paideia-panel"><button id="remove" style="float: right;">X</button>' + header + "<br />" + table + anotherDictionary(word) + thanks + '</div>');
     $('#remove').click(rmPanel);
