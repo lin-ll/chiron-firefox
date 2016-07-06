@@ -1,6 +1,6 @@
 {
-  "name": "Firefoxium Dictionary",
-  "short_name":"Firefoxium",
+  "name": "Chiron Dictionary",
+  "short_name":"Chiron",
   "description": "Look up Latin or Greek words directly in your webpage.",
   "version": "1.0.1",
   "icons": {
@@ -8,7 +8,7 @@
     "48": "paideia-favicon.png",
     "128": "paideia-favicon.png"
   },
-  "homepage_url": "http://www.paideiainstitute.org/chromium",
+  "homepage_url": "http://www.paideiainstitute.org/chiron",
   "permissions": [
         "tabs",
         "http://*/",
@@ -16,7 +16,7 @@
   ],
   "applications": {
     "gecko": {
-      "id": "firefoxium@paideiainstitute.org",
+      "id": "chiron@paideiainstitute.org",
       "strict_min_version": "45.0"
     }
   },
@@ -26,7 +26,7 @@
       "19": "paideia-favicon.png",
       "38": "paideia-favicon.png"
     },
-    "default_title": "Firefoxium Dictionary",
+    "default_title": "Chiron Dictionary",
     "default_popup": "popup.html"
   },
   "content_scripts": [{
